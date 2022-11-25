@@ -3,66 +3,66 @@
 #include <stdlib.h>
 #include <conio.h>					
 
-#define N 10000											// NÀ» 10000À¸·Î Á¤ÀÇ
-#define TRUE 1											// TRUE¸¦ 1·Î Á¤ÀÇ
-#define FALSE 0											// FALSE¸¦ 0À¸·Î Á¤ÀÇ 
+#define N 10000									// Nì„ 10000ìœ¼ë¡œ ì •ì˜
+#define TRUE 1									// TRUEë¥¼ 1ë¡œ ì •ì˜
+#define FALSE 0									// FALSEë¥¼ 0ìœ¼ë¡œ ì •ì˜ 
 
-void swap(int a[], int i, int j) {						// swap ÇÔ¼ö¿¡¼­ ¹è¿­°ú i, j¹øÀç °ªÀ» ¹Þ¾Æ¿Â´Ù.
-	int t = a[i];										// ÇØ´ç ÇÔ¼ö´Â ¹è¿­ÀÇ i¹øÂ°ÀÇ °ª°ú j¹øÂ° °ªÀÇ
-														// ¼ø¼­¸¦ ¼­·Î ¹Ù²Ù¾î ÁÖ´Â ¿ªÇÒÀ» ÇÑ´Ù.
+void swap(int a[], int i, int j) {						// swap í•¨ìˆ˜ì—ì„œ ë°°ì—´ê³¼ i, jë²ˆìž¬ ê°’ì„ ë°›ì•„ì˜¨ë‹¤.
+	int t = a[i];								// í•´ë‹¹ í•¨ìˆ˜ëŠ” ë°°ì—´ì˜ ië²ˆì§¸ì˜ ê°’ê³¼ jë²ˆì§¸ ê°’ì˜
+										// ìˆœì„œë¥¼ ì„œë¡œ ë°”ê¾¸ì–´ ì£¼ëŠ” ì—­í• ì„ í•œë‹¤.
 	a[i] = a[j];					
 	a[j] = t;
 }
 
-void CheckSort(int a[], int n) {						// CheckSort ÇÔ¼ö´Â ¹è¿­°ú N°ªÀ» ¹Þ¾Æ
-	int i, Sorted;										// swap ÇÔ¼ö¸¦ ÅëÇØ °ªÀÌ ¼ø¼­´ë·Î ¹è¿­µÇ¾ú´ÂÁö
-														// È®ÀÎ ÇÏ´Â ÇÔ¼ö ÀÌ´Ù.
+void CheckSort(int a[], int n) {						// CheckSort í•¨ìˆ˜ëŠ” ë°°ì—´ê³¼ Nê°’ì„ ë°›ì•„
+	int i, Sorted;								// swap í•¨ìˆ˜ë¥¼ í†µí•´ ê°’ì´ ìˆœì„œëŒ€ë¡œ ë°°ì—´ë˜ì—ˆëŠ”ì§€
+										// í™•ì¸ í•˜ëŠ” í•¨ìˆ˜ ì´ë‹¤.
 	Sorted = TRUE;
 
-	for (i = 1; i < n; i++) {							// i°¡ nº¸´Ù ÀÛ´Ù¸é °è¼Ó ¹Ýº¹ ÈÄ i°ªÀ» 1¾¿ Áõ°¡ÇÑ´Ù.
-		if (a[i] > a[i + 1])							// ÇöÀç°ªÀÌ ´ÙÀ½°ª º¸´Ù Å©´Ù¸é
-			Sorted = FALSE;								// ¿Ã¹Ù¸£Áö ¾ÊÀº ¹è¿­·Î °ªÀ» FALSE·Î º¯°æÇÑ´Ù.
-		if (!Sorted)									// ¹è¿­ÀÌ ¿Ã¹Ù¸£Áö ¾Ê¾Æ FALSE·Î º¯°æ‰ç´Ù¸é
-			break;										// !Sorted´Â ÇöÀç 0À¸·Î ÂüÀÌ ¾Æ´Ï±â¿¡ ¹Ýº¹À» ±×¸¸µÐ´Ù.
+	for (i = 1; i < n; i++) {						// iê°€ në³´ë‹¤ ìž‘ë‹¤ë©´ ê³„ì† ë°˜ë³µ í›„ iê°’ì„ 1ì”© ì¦ê°€í•œë‹¤.
+		if (a[i] > a[i + 1])						// í˜„ìž¬ê°’ì´ ë‹¤ìŒê°’ ë³´ë‹¤ í¬ë‹¤ë©´
+			Sorted = FALSE;						// ì˜¬ë°”ë¥´ì§€ ì•Šì€ ë°°ì—´ë¡œ ê°’ì„ FALSEë¡œ ë³€ê²½í•œë‹¤.
+		if (!Sorted)							// ë°°ì—´ì´ ì˜¬ë°”ë¥´ì§€ ì•Šì•„ FALSEë¡œ ë³€ê²½Â‰æ¦®æ‘¸
+			break;							// !SortedëŠ” í˜„ìž¬ 0ìœ¼ë¡œ ì°¸ì´ ì•„ë‹ˆê¸°ì— ë°˜ë³µì„ ê·¸ë§Œë‘”ë‹¤.
 	}
 
-	if (Sorted)											// µé¾î¿Â Sorted °ªÀÌ ¿©ÀüÈ÷ TRUE, 1°ªÀÌ¶ó¸é ÂüÀÌ¹Ç·Î					
-		printf("Á¤·Ä¿Ï·á.\n");							// Á¤·Ä ¿Ï·á Ãâ·Â
-	else												// Sorted °ªÀÌ Áß°£¿¡ FALSE, 0°ªÀ¸·Î º¯°æ‰ç´Ù¸é °ÅÁþÀ¸·Î
-		printf("Á¤·Ä ¿À·ù ¹ß»ý.\n");					// Á¤·Ä ¿À·ù ¹ß»ýÀ» Ãâ·Â ÇÑ´Ù.
+	if (Sorted)								// ë“¤ì–´ì˜¨ Sorted ê°’ì´ ì—¬ì „ížˆ TRUE, 1ê°’ì´ë¼ë©´ ì°¸ì´ë¯€ë¡œ					
+		printf("ì •ë ¬ì™„ë£Œ.\n");				              // ì •ë ¬ ì™„ë£Œ ì¶œë ¥
+	else									// Sorted ê°’ì´ ì¤‘ê°„ì— FALSE, 0ê°’ìœ¼ë¡œ ë³€ê²½Â‰æ¦®æ‘¸ ê±°ì§“ìœ¼ë¡œ
+		printf("ì •ë ¬ ì˜¤ë¥˜ ë°œìƒ.\n");			    		     // ì •ë ¬ ì˜¤ë¥˜ ë°œìƒì„ ì¶œë ¥ í•œë‹¤.
 
 }
 
-void SelectionSort(int a[], int n) {					// ¼±ÅÃ Á¤·Ä ¾Ë°í¸®ÁòÀ¸·Î ¹è¿­°ú n°ªÀ» ¹Þ´Â´Ù.
-	int i, j, min;										// ¹è¿­À» À§ÇÑ Á¤¼ö¸¦ ¼±¾ðÇÑ´Ù.
+void SelectionSort(int a[], int n) {						// ì„ íƒ ì •ë ¬ ì•Œê³ ë¦¬ì¦˜ìœ¼ë¡œ ë°°ì—´ê³¼ nê°’ì„ ë°›ëŠ”ë‹¤.
+	int i, j, min;								// ë°°ì—´ì„ ìœ„í•œ ì •ìˆ˜ë¥¼ ì„ ì–¸í•œë‹¤.
 
-	for (i = 1; i < n; i++) {							// i°¡ nº¸´Ù ÀÛ´Ù¸é °è¼Ó ¹Ýº¹ ÈÄ i°ªÀ» 1¾¿ Áõ°¡ÇÑ´Ù.
-		min = i;										// ÇöÀç i°ªÀ» min°ª¿¡ º¹»ç
+	for (i = 1; i < n; i++) {						// iê°€ në³´ë‹¤ ìž‘ë‹¤ë©´ ê³„ì† ë°˜ë³µ í›„ iê°’ì„ 1ì”© ì¦ê°€í•œë‹¤.
+		min = i;							// í˜„ìž¬ iê°’ì„ minê°’ì— ë³µì‚¬
 
-		for (j = i + 1; j <= n; j++) {					// j°ªÀº i+1°ªÀÌ¸ç j°¡ nº¸´Ù ÀÛ°Å³ª °°´Ù¸é ¹Ýº¹ÈÄ j°ªÀ» 1 Áõ°¡
-			if (a[j] < a[min])							// ¸¸¾à j¹øÂ°°ªÀÌ ÇöÀç i(min)¹øÂ° °ªº¸´Ù ÀÛ´Ù¸é
-				min = j;								// ÇåÀç j°ªÀ» min°ª¿¡ º¹»ç
+		for (j = i + 1; j <= n; j++) {					// jê°’ì€ i+1ê°’ì´ë©° jê°€ në³´ë‹¤ ìž‘ê±°ë‚˜ ê°™ë‹¤ë©´ ë°˜ë³µí›„ jê°’ì„ 1 ì¦ê°€
+			if (a[j] < a[min])					// ë§Œì•½ jë²ˆì§¸ê°’ì´ í˜„ìž¬ i(min)ë²ˆì§¸ ê°’ë³´ë‹¤ ìž‘ë‹¤ë©´
+				min = j;					// í—Œìž¬ jê°’ì„ minê°’ì— ë³µì‚¬
 		}
-		swap(a, min, i);								// ¹è¿­ a¿Í ÇöÀç j(min)°ª°ú, i°ªÀ» swapÇÔ¼ö·Î Àü´ÞÇÏ¿© ¼ø¼­¸¦ ¹Ù²Û´Ù.
-	}													// for ¹®ÀÌ Á¾·á µÉ¶§±îÁö ¹Ýº¹ÇÑ´Ù.
+		swap(a, min, i);						// ë°°ì—´ aì™€ í˜„ìž¬ j(min)ê°’ê³¼, iê°’ì„ swapí•¨ìˆ˜ë¡œ ì „ë‹¬í•˜ì—¬ ìˆœì„œë¥¼ ë°”ê¾¼ë‹¤.
+	}									// for ë¬¸ì´ ì¢…ë£Œ ë ë•Œê¹Œì§€ ë°˜ë³µí•œë‹¤.
 }
 
 void main() {
-	int i, a[N + 1];									// ¸ÞÀÎÇÔ¼ö¿¡¼­ Á¤¼ö i¿Í ¹è¿­a¸¦ »ý¼ºÇÑ´Ù.
-	double start_time;									// ½ÇÇà ½Ã°£À» È®ÀÎÇÏ±â À§ÇÑ ½Ç¼ö start_timeÀ» »ý¼ºÇÑ´Ù.
+	int i, a[N + 1];								// ë©”ì¸í•¨ìˆ˜ì—ì„œ ì •ìˆ˜ iì™€ ë°°ì—´aë¥¼ ìƒì„±í•œë‹¤.
+	double start_time;								// ì‹¤í–‰ ì‹œê°„ì„ í™•ì¸í•˜ê¸° ìœ„í•œ ì‹¤ìˆ˜ start_timeì„ ìƒì„±í•œë‹¤.
 
-	srand(time(NULL));									// ½Ã°£°ªÀ» »ç¿ëÇÏ¿© ³­¼ö »ý¼º
+	srand(time(NULL));								// ì‹œê°„ê°’ì„ ì‚¬ìš©í•˜ì—¬ ë‚œìˆ˜ ìƒì„±
 	for (i = 1; i <= N; i++)										
-		a[i] = rand();									// ¹Ýº¹¹®À¸·Î i°¡ N°ªº¸´Ù Ä¿Áú¶§±îÁö °è¼Ó ³­¼ö°ªÀ» a[i]¹è¿­¿¡ ³Ö´Â´Ù.
+		a[i] = rand();								// ë°˜ë³µë¬¸ìœ¼ë¡œ iê°€ Nê°’ë³´ë‹¤ ì»¤ì§ˆë•Œê¹Œì§€ ê³„ì† ë‚œìˆ˜ê°’ì„ a[i]ë°°ì—´ì— ë„£ëŠ”ë‹¤.
 
-	start_time = clock();								// ½ÃÀÛ ½Ã°£À» start_time¿¡ ±â·ÏÇÑ´Ù.
-	SelectionSort(a, N);								// Selection ÇÔ¼ö¿¡ a¹è¿­°ú N°ªÀ» Àü´Þ. 
-	printf("¼±ÅÃ Á¤·ÄÀÇ ½ÇÇà ½Ã°£ (N = %d) : %.0f\n", N, clock() - start_time);	
-														// ÇöÀç ½Ã°£°ª¿¡¼­ ½ÃÀÛ½Ã°£ °ªÀ»»©¼­ °æ°ú ½Ã°£À» Ãâ·ÂÇÑ´Ù.
-	CheckSort(a, N);									// CheckSort °ª¿¡ a¿Í N°ªÀ» º¸³» ¹è¿­ÀÌ ¿Ã¹Ù¸£°Ô Á¤·Ä µÇ¾ú´ÂÁö È®ÀÎ
+	start_time = clock();								// ì‹œìž‘ ì‹œê°„ì„ start_timeì— ê¸°ë¡í•œë‹¤.
+	SelectionSort(a, N);								// Selection í•¨ìˆ˜ì— aë°°ì—´ê³¼ Nê°’ì„ ì „ë‹¬. 
+	printf("ì„ íƒ ì •ë ¬ì˜ ì‹¤í–‰ ì‹œê°„ (N = %d) : %.0f\n", N, clock() - start_time);	
+											// í˜„ìž¬ ì‹œê°„ê°’ì—ì„œ ì‹œìž‘ì‹œê°„ ê°’ì„ë¹¼ì„œ ê²½ê³¼ ì‹œê°„ì„ ì¶œë ¥í•œë‹¤.
+	CheckSort(a, N);								// CheckSort ê°’ì— aì™€ Nê°’ì„ ë³´ë‚´ ë°°ì—´ì´ ì˜¬ë°”ë¥´ê²Œ ì •ë ¬ ë˜ì—ˆëŠ”ì§€ í™•ì¸
 
 
-	printf("¾Æ¹«Å°³ª ´©¸£¼¼¿ä.\n");
-	while (!_kbhit());									// Å°º¸µå ÀÔ·ÂÀÌ ÀÖÀ»¶§ ±îÁö ¹Ýº¹ÇÑ´Ù.
-	fflush(stdin);										// ÀÔ·ÂµÈ ¹öÆÛ¸¦ Á¦°ÅÇÑ´Ù.
+	printf("ì•„ë¬´í‚¤ë‚˜ ëˆ„ë¥´ì„¸ìš”.\n");
+	while (!_kbhit());									// í‚¤ë³´ë“œ ìž…ë ¥ì´ ìžˆì„ë•Œ ê¹Œì§€ ë°˜ë³µí•œë‹¤.
+	fflush(stdin);										// ìž…ë ¥ëœ ë²„í¼ë¥¼ ì œê±°í•œë‹¤.
 }
